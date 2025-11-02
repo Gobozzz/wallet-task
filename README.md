@@ -20,15 +20,18 @@ Wallet API — это API-совместимый сервис, позволяю�
 
 ```bash
 git clone https://github.com/Gobozzz/wallet-task.git
-cd <папка с проектом>
+cd wallet-test
 
-2. Запустите Laravel Sail:
+2. Запустите
+composer install
+
+3. Запустите Laravel Sail:
 ./vendor/bin/sail up -d
 
-3. Установите зависимости:
+4. Установите зависимости:
 ./vendor/bin/sail composer install
 
-4. Выполните миграции
+5. Выполните миграции
 ./vendor/bin/sail artisan migrate --seed
 
 ## Использование
