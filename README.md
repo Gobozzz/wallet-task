@@ -78,6 +78,9 @@ BODY: {
 Баланс
 http://localhost/api/v1/balance/{user_id} GET
 
+## POSTMAN
+Прилагаю готовую коллекцию POSTMAN к проекту по ссылке https://github.com/Gobozzz/wallet-task/blob/main/Wallet.postman_collection.json
+
 ## Тесты
 
 Для запуска тестов используйте:
