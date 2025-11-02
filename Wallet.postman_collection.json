@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "a3e353d3-e060-4624-ad1a-62b9ae183d18",
+		"name": "Wallet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27011133"
+	},
+	"item": [
+		{
+			"name": "Deposit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"amount\": 500.00,\r\n    \"comment\": \"Пополнение через карту\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/deposit",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"deposit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Withdraw",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"amount\": 5000,\r\n    \"comment\": \"Покупка подписки\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/withdraw",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"withdraw"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"from_user_id\": 1,\r\n    \"to_user_id\": 2,\r\n    \"amount\": 150.00,\r\n    \"comment\": \"Перевод другу\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/transfer",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/balance/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"balance",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					"pm.request.headers.add(\"Content-Type: application/json\")\r",
+					"pm.request.headers.add({key: 'accept', value: 'application/json' })"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": ""
+		}
+	]
+}
