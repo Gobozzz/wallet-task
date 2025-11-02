@@ -28,7 +28,7 @@ composer install
 3. Запустите Laravel Sail:
 ./vendor/bin/sail up -d
 
-5. Выполните миграции
+4. Выполните миграции
 ./vendor/bin/sail artisan migrate --seed
 
 ## Использование
