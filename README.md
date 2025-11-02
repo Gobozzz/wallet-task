@@ -18,23 +18,65 @@ Wallet API — это API-совместимый сервис, позволяю�
 
 1. Клонируйте репозиторий:
 
-```bash
 git clone https://github.com/Gobozzz/wallet-task.git
 cd wallet-task
 
 2. Запустите
 composer install
 
-3. Запустите Laravel Sail:
+3. Делаем файл .env
+cp .env.example .env
+
+4. Генерируем APP_KEY
+./vendor/bin/sail artisan key:generate
+
+5. Запустите Laravel Sail:
 ./vendor/bin/sail up -d
 
-4. Выполните миграции
+6. Выполните миграции
+./vendor/bin/sail artisan migrate --seed
+
+Если на этапе миграций будет ошибка коннекта к базе, то:
+./vendor/bin/sail down
+docker volume rm $(docker volume ls -q | grep wallet)
+./vendor/bin/sail up -d
+sleep 60
 ./vendor/bin/sail artisan migrate --seed
 
 ## Использование
 
-API доступен по адресу http://localhost (или другой, если настроили по-другому)
+API доступен по адресу http://localhost
 Все запросы можно тестировать через Postman
+
+## Роуты
+
+Депозит
+http://localhost/api/v1/deposit POST
+BODY: {
+    "user_id": 1,
+    "amount": 500.00,
+    "comment": "Пополнение через карту"
+}
+
+Списание
+http://localhost/api/v1/withdraw POST
+BODY: {
+    "user_id": 1,
+    "amount": 500,
+    "comment": "Покупка подписки"
+}
+
+Перевод
+http://localhost/api/v1/transfer POST
+BODY: {
+    "from_user_id": 1,
+    "to_user_id": 2,
+    "amount": 150.00,
+    "comment": "Перевод другу"
+}
+
+Баланс
+http://localhost/api/v1/balance/{user_id} GET
 
 ## Тесты
 
